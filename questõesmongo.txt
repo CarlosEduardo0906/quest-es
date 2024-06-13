@@ -1,20 +1,17 @@
 1-4
-como listar campos especificos em mongodb pelo cmd do windows
-ChatGPT
-ChatGPT
-Para listar campos específicos em documentos MongoDB usando o terminal do Windows, você pode usar o comando find() em conjunto com a projeção de campos. Aqui está um exemplo de como fazer isso:
+Para listar os campos "descrição", "marca", "processador", "memória" e "disco" classificados por marca em ordem ascendente, você pode usar o comando find() com a projeção de campos e o método sort(). Aqui está como fazer isso:
 
-Suponha que você tenha uma coleção chamada usuarios e queira listar apenas os campos nome e email de todos os documentos:
-
-php
+javascript
 Copiar código
-db.usuarios.find({}, { nome: 1, email: 1, _id: 0 })
-Explicação:
+db.modelo.find(
+  {}, 
+  { descricao: 1, marca: 1, "configuração.processador": 1, "configuração.memoria": 1, "configuração.disco": 1, _id: 0 }
+).sort({ marca: 1 })
+Este comando retornará todos os documentos da coleção modelo com os campos especificados e ordenados por marca em ordem ascendente.
 
-db.usuarios.find({}): Isso seleciona todos os documentos na coleção usuarios.
-{ nome: 1, email: 1, _id: 0 }: Isso especifica quais campos devem ser retornados nos documentos. O valor 1 indica que o campo deve ser incluído no resultado, enquanto o valor 0 indica que o campo deve ser excluído. Como o campo _id é automaticamente retornado, usamos 0 para excluí-lo do resultado.
-Certifique-se de substituir usuarios pelo nome da sua coleção e ajustar os campos conforme necessário.
+Certifique-se de que o caminho dos campos processador, memoria e disco na sua coleção esteja corretamente mapeado, uma vez que eles estão aninhados dentro de configuração.
 
+Lembre-se de ajustar o nome da coleção (modelo) conforme necessário.
 
 
 
