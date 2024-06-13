@@ -64,12 +64,19 @@ Suponha que você tenha uma coleção chamada equipamentos e deseja listar apena
 
 javascript
 Copiar código
-db.equipamentos.find(
-  { 
-    marca: "SuaMarca",
-    "configuração.memoria": "16GB" 
+db.computadores.find(
+  {
+    Marca: { $in: ["HP", "Dell", "Lenovo"] },
+    "Configuracao.Memoria": "16 Gb"
   },
-  { descricao: 1, marca: 1, "configuração.processador": 1, "configuração.memoria": 1, "configuração.disco": 1, _id: 0 }
+  {
+    Descricao: 1,
+    Marca: 1,
+    "Configuracao.Processador": 1,
+    "Configuracao.Memoria": 1,
+    "Configuracao.Disco": 1,
+    _id: 0
+  }
 )
 
 Este comando irá retornar todos os documentos da coleção equipamentos que tenham a marca "MarcaX" e a memória de "16GB". Certifique-se de ajustar os valores dos atributos marca e memoria de acordo com o que você está procurando em sua coleção.
